@@ -4,7 +4,7 @@ repo contains the following:
   - WB2630 Advanced Mechanics
     * T1 Advanced Dynamics
     * T2 Continuum Mechanics
-  - WBMT2048 Analysis (T1)
+  - WBMT2048 Analysis
   - WB2632 Advanced Engineering Design
  
 
