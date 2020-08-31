@@ -1,0 +1,210 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage{graphicx}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mhchem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{cancel}
+
+\graphicspath{ {./images} }
+\newcommand*{\qed}{\hfill\ensuremath{\quad\square}}%
+\newcommand*{\rad}{\ensuremath{\,\text{rad}}}
+\newcommand*{\R}{\ensuremath{\mathbb{R}}}
+\newcommand*{\C}{\ensuremath{\mathbb{C}}}
+\newcommand*{\Z}{\ensuremath{\mathbb{Z}}}
+\renewcommand*{\d}{\text{d}}
+\renewcommand*{\Re}{\operatorname{Re}}
+\renewcommand*{\Im}{\operatorname{Im}}
+\renewcommand*{\epsilon}{\varepsilon}
+\renewcommand*{\phi}{\varphi}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\newtheorem{theorem}{Theorem}
+
+%------------------------------------------------
+%Templates for images and figures
+% \begin{figure}[h]
+%   \centering
+%   \subfloat[caption 1]{{\includegraphics[width=30mm]{images/placeholder.png}}}%
+%   \qquad
+%   \subfloat[caption 2]{{\includegraphics[width=30mm]{images/placeholder.png}}}%
+%   \caption{Description}
+% \end{figure}
+
+% \begin{figure}[h]
+%   \centerline{\includegraphics[width=50mm]{images/placeholder.png}}
+%   \caption{Description}
+% \end{figure}
+
+%Template for a simple table 
+%\begin{table}[h]
+%   \caption{Description} %title of the table
+%   \centering % centering table
+%   \begin{tabular}{l rr} % creating three columns
+%     \hline\hline %inserting double-line
+%     & & \\ [0.5ex] % Insert half line vertical spacing
+%     \hline % inserts single-line
+%     & & \\ 
+%     & & \\
+%     & & \\
+%     & & \\
+%   \hline % inserts single-line
+%   \end{tabular}
+%   \label{tab:hresult}
+% \end{table}
+%-----------------------------------------------
+
+\begin{document}
+\setcounter{section}{-1}
+\section{WB2630-T1 \& T2 Math review}
+
+
+\subsection{Vectors and Matrices}
+Vectors are lists of numbers which can graphically be represented as arrows in space. They can be denoted as either row or column vectors:
+\begin{align*}
+  \text{Column: }
+  \vec{r} &= 
+  \begin{pmatrix} 
+    r_1 \\ 
+    \vdots \\ r_n 
+  \end{pmatrix}\\
+  \text{Row: }
+  \vec{r} &= \begin{pmatrix} r_1 & \cdots & r_n \end{pmatrix}^T
+\end{align*}
+
+Matrices are just multi-dimensional arrays. Or just think of them as a vector of vectors. They can graphivally be represented as some linear transformation acting on a vector. Matrices will usually be denoted as:
+\begin{gather*}
+  A = 
+  \begin{pmatrix}
+  a_{11} & \cdots & a_{1n}\\
+  \vdots & \ddots & \vdots\\
+  a_{m1} & \cdots & a_{mn}
+  \end{pmatrix}
+\end{gather*}
+
+
+\subsection{Properties of Vectors}
+Vectors can be added and subtracted together if they are expressed in terms of the same basis vectors. Vectors can also be scaled by some scalar value $\alpha \in \R^n$. Multiplication of vectors takes 2 forms. The dot or scalar product and the cross or vector product.\\
+\\
+The Dot product of 2 vectors outputs a scalar value and represents roughly how much 2 values are in the same direction. The dot product is given as:
+\begin{gather*}
+  c = \vec{a} \cdot \vec{b} \equiv |\vec{a}||\vec{b}|\cos(\theta) \quad c \in \R, \;\vec{a}, \vec{b} \in \R^n
+\end{gather*}
+The dot productive is communicative:
+\begin{equation*}
+  \vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}
+\end{equation*}
+There are several other ways to represent the dot product. Some examples are:
+\begin{equation*}
+  \vec{a} \cdot \vec{b} = \vec{a}^T \vec{b} = \sum_{i=1}^{n} a_i b_i
+\end{equation*}
+
+The cross product outputs a vector that is perpendicular to the plane spanned by the other 2 vectors. The magnitude of this 3rd vector represents the area of the plane spanned by the first 2 vectors. The cross product is given as:
+\begin{align*}
+  \vec{c} &= \vec{a} \times \vec{b}\\
+  |\vec{c}| &= |\vec{a}||\vec{b}|\sin(\theta) \quad \theta \in [0, \pi]
+\end{align*}
+
+Let $\vec{a}, \vec{b}$ and $\vec{c}$ be:
+\begin{gather*}
+  \vec{a} = \begin{pmatrix} a_x \\ a_y \\ a_z \end{pmatrix} \quad
+  \vec{b} = \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix} \quad
+  \vec{c} = \begin{pmatrix} c_x \\ c_y \\ c_z \end{pmatrix}
+\end{gather*}
+if $\vec{c} = \vec{a} \times \vec{b}$, then:
+\begin{align*}
+  c_x &= a_yb_z - b_ya_z\\
+  c_y &= b_xa_z - a_xb_z\\
+  c_z &= a_xb_y - b_xa_y\\
+\end{align*}
+The cross product is anti-communicative:
+\begin{equation*}
+  \vec{a} \times \vec{b} = -(\vec{b} \times \vec{a})
+\end{equation*}
+
+
+\subsection{Properties of Matrices}
+Some matrix $A$ can have any $m \times n$ shape. Matrices can be multiplied with eachother to create new matrices. They can also be multiplied with vectors to map them to different vectors. Let $A$ be an $m \times n$ matrix:
+\begin{equation*}
+  A\vec{x} = \vec{y} \quad \vec{x} \in \R^n ,\; \vec{y} \in \R^m
+\end{equation*}
+
+Matrices can be transposed. The transpose operation interchanges the rows and columns of a matrix and is dentoted with $T$. If a matrix is symmetric then:
+\begin{equation*}
+  A^T = A
+\end{equation*}
+
+Square matrices with a non-zero determinant can be inverted. Multiplying by the inverse of a matrix is analogous to multiplying by the inverse of a number:
+\begin{equation*}
+  AA^{-1} = I_n
+\end{equation*}
+Which can then be used to solve vector equations:
+\begin{equation*}
+  A\vec{x} = \vec{y} \Rightarrow \vec{x} = A^{-1}\vec{y}
+\end{equation*}
+
+
+\subsection{Eigenvalues and eigenvectors}
+For some special cases the following relation holds for matrix-vector multiplication:
+\begin{equation*}
+  A\vec{x} = \lambda\vec{x}
+\end{equation*}
+Where $\lambda$ denotes an eigenvalue of $A$. This expression can then be used to find the eigenvalues of $A$:
+\begin{equation*}
+  (A - \lambda I)\vec{x} = \vec{0}
+\end{equation*}
+This form can then be used to find eigenvalues of $A$ with the following:
+\begin{equation*}
+  \text{det}(A-\lambda I) = 0
+\end{equation*}
+
+
+\subsection{Differentiation and integration}
+Time derrivatives of variables will be denoted with a dot on top of the variable name.
+\begin{equation*}
+  \dot{r} = \frac{\d r}{\d t} = \lim_{\Delta t \to 0} \frac{r(t + \Delta t) - r(t)}{\Delta t}
+\end{equation*}
+The basic rules for differentiation are:
+\begin{align*}
+  (c \cdot f(x))' &= c \cdot f'(x) &\\
+  (f(g(x)))' &= f'(g(x)) \cdot g'(x) = \frac{\d f}{\d g} \frac{\d g}{\d x} \quad &\text{(Chain Rule)}\\ 
+  (f(x) \cdot g(x))' &= f'(x)g(x) + f(x)g'(x) \quad &\text{(Product Rule)}\\
+  \left( \frac{f(x)}{g(x)} \right)' &= \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2} \quad &\text{(Quotient Rule)}
+\end{align*}
+For multivaribale functions the derrivative is described in terms of partial derrivatives:
+\begin{equation*}
+  \d f(x, y, z) = \frac{\partial f}{\partial x}\d x + \frac{\partial f}{\partial y}\d y + \frac{\partial f}{\partial z}\d z
+\end{equation*}
+This can also more compactly be written as:
+\begin{equation*}
+  \d f(x_1 \cdots x_N) = \sum_{i=1}^{N} \frac{\partial f}{\partial x_i}\d x_i
+\end{equation*}
+In some cases $x = x(t)$. The total derrivative is then found applying the chain rule:
+\begin{equation*}
+  \frac{\d f(x_1 \cdots x_N)}{\d t} = \sum_{i=1}^{N} \frac{\partial f}{\partial x_i} \frac{\d x_i}{\d t}
+\end{equation*}
+
+Partial derrivatives are also used to express the gradient vector, which is the multi-variable analogy of the derrivative of some function.
+\begin{equation*}
+  \nabla f(x, y, z) =
+  \begin{pmatrix}
+    \frac{\partial f}{\partial x}\\
+    \frac{\partial f}{\partial y}\\
+    \frac{\partial f}{\partial z}\\
+  \end{pmatrix}
+\end{equation*}
+
+\end{document}
