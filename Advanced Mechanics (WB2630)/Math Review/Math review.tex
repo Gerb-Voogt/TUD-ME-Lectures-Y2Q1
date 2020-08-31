@@ -172,7 +172,7 @@ This form can then be used to find eigenvalues of $A$ with the following:
 \end{equation*}
 
 
-\subsection{Differentiation and integration}
+\subsection{Differentiation}
 Time derrivatives of variables will be denoted with a dot on top of the variable name.
 \begin{equation*}
   \dot{r} = \frac{\d r}{\d t} = \lim_{\Delta t \to 0} \frac{r(t + \Delta t) - r(t)}{\Delta t}
@@ -207,4 +207,23 @@ Partial derrivatives are also used to express the gradient vector, which is the 
   \end{pmatrix}
 \end{equation*}
 
+
+\subsection{Integration}
+Integration is less elegant and more difficult then differentiation, thus the tools for analytically solving integrals are limited. Integrals will be denoted as follows:
+\begin{equation*}
+  r(t) = \int_{t_1}^{t_2} \dot{r}\,\d t
+\end{equation*}
+Some general rules for analytical integration are:
+\begin{align*}
+  \int c\cdot f(x)\,\d x &= c \cdot \int f(x)\,\d x\\
+  \int f(x)g'(x)\,\d x &= f(x)g(x) - \int f'(x) g(x)\,\d x
+\end{align*}
+Sometimes a u-subsitution can be used to analitally solve the integral, however in alot of cases no solution exists. In this case numerical methods are usually applied. One such example is the Euler method of numerical intgeration.\footnote{There are many more numerical methods of integrating which are more efficient, however the Euler method is easiest to implement in Python for example.}. The euler method uses the following principle:
+\begin{gather*}
+  y = y(t) \quad v = v(t) \quad a = C\\
+  \frac{\d y}{\d t} = v(t)\\
+  y_{n+1} \approx y_n + v_n\Delta t\\
+  v_{n+1} \approx v_n + a\Delta t
+\end{gather*}
+The method becomes more exact for smaller choice of $\Delta t$ time step.
 \end{document}
