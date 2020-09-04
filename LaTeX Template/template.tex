@@ -12,6 +12,7 @@
 \usepackage{hyperref}
 \usepackage{tikz}
 \usepackage{cancel}
+\usepackage{bm}
 
 \graphicspath{ {./images} }
 \newcommand*{\qed}{\hfill\ensuremath{\quad\square}}%
@@ -22,6 +23,20 @@
 \renewcommand*{\Im}{\operatorname{Im}}
 \renewcommand*{\epsilon}{\varepsilon}
 \renewcommand*{\phi}{\varphi}
+\renewcommand*{\d}{\text{d}}
+
+\DeclareRobustCommand{\uvec}[1]{{%
+  \ifcat\relax\noexpand#1%
+    % it should be a Greek letter
+    \bm{\hat{#1}}%
+  \else
+    \ifcsname uvec#1\endcsname
+      \csname uvec#1\endcsname
+    \else
+      \bm{\hat{\mathbf{#1}}}%
+     \fi
+   \fi
+}}
 
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
@@ -31,6 +46,7 @@
 \makeatother
 
 \newtheorem{theorem}{Theorem}
+\numberwithin{equation}{section}
 
 %------------------------------------------------
 %Templates for images and figures
