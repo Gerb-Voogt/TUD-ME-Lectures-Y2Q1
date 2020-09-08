@@ -125,8 +125,8 @@ Furthermore if $\lim_{x\to \infty} f(x) = L$ and $f(n) = a_n$ when $n \in \N$, t
 \subsection{Evaluating limits}
 Evaluating limits can often give undefined forms such as $\infty \pm \infty$, $\frac{0}{0}$ and $\frac{\infty}{\infty}$. In these cases usual procedure is to divide every term by the highest polynomial power. For example:
 \begin{align*}
-  \lim_{x\to\infty} \sqrt{2 + 6x + 4x^2} &= \lim_{x \to \infty} \sqrt{\frac{2}{x^2} + \frac{6x}{x^2} + \frac{4x^2}{x^2}}\\
-  &= \lim_{x\to\infty} \sqrt{0 + 0 + 4} = 2
+  \lim_{n\to\infty} \frac{n^2}{n^2 + 1} = \lim_{n\to\infty} \frac{\frac{n^2}{n^2}}{\frac{n^2}{n^2} + \frac{1}{n^2}} &= \lim_{n\to\infty} \frac{1}{1 + \frac{1}{n^2}}\\
+  &= \frac{1}{1} = 1
 \end{align*}
 In some cases the limit can be difficult to actually calculate. In such cases the squeeze theorem can be a helpfull tool. The theorem states that: if $a_n \leq b_n \leq c_n$ for $n \geq N$ and $\lim_{n\to \infty} a_n = \lim_{n\to \infty} c_n = L$, then the $\lim_{n\to \infty} b_n = L$. This is best illustrated with an example.
 We want to find out whether the following sequence converges or diverges:
