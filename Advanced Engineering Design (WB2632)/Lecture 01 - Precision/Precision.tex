@@ -280,6 +280,49 @@ Subsituting the expression we found for $F_1$ back into this equation we get:
 From this we can conclude that the system will in fact jam if the ration $h/2e$ is equal to or smaller then the friction coefficient. Because of this we want to maximize jamming to advoid jamming. This means making the eccentricity $e$ smaller or the length $h$ longer, or both.
 
 
+\subsection{Structural analysis}
+Strucutural analysis is applied to quantify error in the final product based on the stiffness of the machine frame. it's an integral part of quantiifying error and a very common source of error.
+
+\subsubsection{Open and closed structures}
+Machines frames can be divided in 3 important main groups. The first 2 are: long-open structured loop designs and closed strucutre design (from foundation to foundation). Generally open loop structures need to be more heavy duty to minimize the error due to deformation of the machine frame. This is considerably easier for closed frame designs, however these tend to be heavier and larger.
+\begin{figure}[h]
+  \centering
+  \subfloat [long-open structured loop]{{\includegraphics[width=60mm]{images/Open_frame.jpg}}}%
+  \qquad
+  \subfloat[Closed structure designs]{{\includegraphics[width=60mm]{images/closed_frame.jpg}}}%
+  \caption{Typical machine designs for open and closed loop desgins}
+\end{figure}
+We can model an idealized version of these frames using the following 2 Free Body Diagrams:
+\begin{figure}[h]
+  \centering
+  \subfloat [long-open structured loop]{{\includegraphics[width=60mm]{images/FBD_1.png}}}%
+  \qquad
+  \subfloat[Closed structure designs]{{\includegraphics[width=60mm]{images/FBD_2.png}}}%
+  \caption{Free Body diagrams of both types of machine frame design}
+\end{figure}
+The 3rd common design for a machine frame is a scara arm type. They are by far the fastest and lightest but also the most susceptible to deformation. They have a long arm which leads to large moments deforming the structure. Additionally due to the high speed dynamical analysis needs to be applied to quantify acceleration forces.
+\begin{figure}[h]
+  \centering
+  \subfloat [Common Scaraarm design]{{\includegraphics[width=60mm]{images/Scara_arm.png}}}%
+  \qquad
+  \subfloat[FBD]{{\includegraphics[width=60mm]{images/FBD_3.png}}}%
+  \caption{Typical design and Free Body diagrams of a scara arm}
+\end{figure}
+When applying structural analysis to only $L_1$ we find that:
+\begin{equation}
+  d_{v1}' = \frac{FL_1^3}{3EI_{x1}}
+\end{equation}
+However when considering the whole assembly we also need to account for the deformation due to $L_2$. This effect can be summarized with an amplitude factor $A$ which results in the following expression of $d_{v1}$:
+\begin{equation}
+  d_{v1} = Ad_{v1}' = A\frac{FL_1^3}{3EI_{x1}}
+\end{equation}
+Where $A$ is given as:
+\begin{equation}
+  A = \left( 1 + \frac{3L_2 E I_{x1}}{L_1GI_{p2}} + \left( \frac{L_2}{L_1}\right)^3 \frac{I_{x1}}{I_{x2}}\right)
+\end{equation}
+If $I_p = 2I_x$, $E/G=3$ and $L_2/L_1 = 1$ we find that $A=6.5$
+
+
 \subsection{Error budgets}
 The error budget is a table usually Which represents and quanitfies all the possible sources for error in the system. The total error of the system can be estimated using an error budget by summing together all the individual error sources. The table below gives an example of an error budget.
 \begin{table}[h]
